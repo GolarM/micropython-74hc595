@@ -61,7 +61,11 @@ class SR74HC595_SPI:
 
     def __getitem__(self, index):
         return self.buf[index]
-
+        
     def __setitem__(self, index, value):
-        self.buf[index] = value
+        if isinstance(value, int):
+            self.buf[index] = value
+        if isinstance(value, list) and len(self.buf) == len(value):
+            for i in range(len(self.buf)):
+                self.buf[    i     ] = value[i]
         self._write(True)
