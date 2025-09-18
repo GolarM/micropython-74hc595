@@ -65,7 +65,7 @@ class SR74HC595_SPI:
     def __setitem__(self, index, value):
         if isinstance(value, int):
             self.buf[index] = value
-        if isinstance(value, list) and len(self.buf) == len(value):
-            for i in range(len(self.buf)):
+        if isinstance(value, list) and len(self.buf) => len(value):
+            for i in range(len(value)):
                 self.buf[    i     ] = value[i]
         self._write(True)
